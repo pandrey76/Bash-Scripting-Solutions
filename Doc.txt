@@ -319,3 +319,154 @@ Bob + Jane + 3.14
             - $ echo \# Comment;
             - # Comment.
 #################################################################################
+
+    0105.Conditional Logic Using if, else, and elseif
+#################################################################################
+   Conditional Logic Using if, else, and elseif
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0104.Hidden Bash Variables and Reserved Words$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd "0105.Conditional Logic Using if, else, and elseif"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif$ mkdir Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ atom if.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "if.sh":
+**********************************************************************************
+#!/bin/bash
+
+AGE=17
+if [ ${AGE} -lt 18 ]; then
+  echo "You must be 18 or older to see this movie"
+fi
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ chmod a+x if.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ bash if.sh
+You must be 18 or older to see this movie
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ atom if_else.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "if_else.sh":
+**********************************************************************************
+#!/bin/bash
+
+AGE=40
+if [ ${AGE} -lt 18 ]; then
+  echo "You must be 18 or older to see this movie"
+else
+  echo "You may see the movie!"
+  exit 1
+fi
+
+echo "This line will never get executed"
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ chmod a+x if_else.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ bash if_else.sh
+You may see the movie!
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ atom if_elif.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "if_elif.sh":
+**********************************************************************************
+#!/bin/bash
+
+AGE=21
+if [ ${AGE} -lt 18 ]; then
+  echo "You must be 18 or older to see this movie"
+elif [ ${AGE} -eq 21 ]; then
+  echo "You may see the movie and get popcorn"
+else
+  echo "You may see the movie!"
+  exit 1
+fi
+
+echo "This line might not get executed"
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ chmod a+x if_elif.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ bash if_elif.sh
+You may see the movie and get popcorn
+This line might not get executed
+//////////////////////////////////////////////////////////////////////////////////
+
+    Oprerators
+        * -gt (greater than >);
+        * -ge (greater or equal to >=);
+        * -lt (less than <);
+        * -le (jess than or equal to <=);
+        * -eq (equal to ==);
+        * -nq (not equal to !=).
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ atom strings_evaluation.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "strings_evaluation.sh":
+**********************************************************************************
+#!/bin/bash
+
+MY_NAME="John"
+NAME_1="Bob"
+NAME_2="Jane"
+NAME_3="Sue"
+NAME_4="Kate"
+
+if [ "${MY_MAME}" == "Ron" ]; then
+  echo "Ron is home from vacation"
+elif [[ "${MY_MAME}" != ${NAME_1}" && "${MY_MAME}" != ${NAME_2}" && "${MY_NAME}" == "John" ]]; then
+  echo "John is home after some unnecessary AND logic"
+elif [ "${MY_MAME}" == ${NAME_3}" || "${MY_MAME}" == ${NAME_4}" ]; then
+  echo "Look like one of the ladies are home"
+else
+  echo "Who is stranger?"
+fi
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ chmod a+x strings_evaluation.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ bash strings_evaluation.sh
+John is home after some unnecessary AND logic
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ atom nested_if.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "nested_if.sh":
+**********************************************************************************
+#!/bin/bash
+
+USER_AGE=18
+AGE_LIMIT=18
+NAME="Bob"
+HAS_NIGHTMARES="true"
+
+if [ "${USER}" == "${NAME}" ]; then
+  if [ ${USER_AGE} -ge ${AGE_LIMIT} ]; then
+    if [ "${HAS_NIGHTMARES}" == "true" ]; then
+      echo "${USER} get nightmares, and should not see the movie"
+    fi
+  fi
+else
+  echo "Who is this?"
+fi
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ chmod a+x nested_if.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0105.Conditional Logic Using if, else, and elseif/Scripts$ bash nested_if.sh
+Who is this?
+//////////////////////////////////////////////////////////////////////////////////
+#################################################################################
