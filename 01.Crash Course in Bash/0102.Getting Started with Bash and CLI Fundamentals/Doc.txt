@@ -1,0 +1,166 @@
+
+Crash Course in Bash
+
+    Section 1
+
+    Getting Started with Bash and CLI Fundamentals
+
+    Run terminal Ctrl+Alt+T
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~$ sudo -i
+    [sudo] пароль для admin1:
+root@ubuntu18:~#
+//////////////////////////////////////////////////////////////////////////////////
+
+    Команда:
+     sudo
+            -i, --login         запустить оболочку входа
+                                в систему от имени
+                                указанного пользователя;
+
+     Bash Profile
+
+        * Mentioned as .bashrc
+        * Used to contain:
+            - Command aliases;
+            - Shortcuts;
+            - Environment variables;
+            - Other user enhancements - prompt colors.
+        * Located at ~/.bashrc or ~/.bash_profile
+
+    Команда reset работает аналогично clear, только она полностью очишает терминал
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~$ reset
+//////////////////////////////////////////////////////////////////////////////////
+
+Команда history возвращает список всех успешных команд выполненных через терминал.
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~$ history
+ 1992  sudo -i
+ 1993  cd /home/admin1/work/Education/Admining/
+ 1994  git clone git@github.com:pandrey76/Bash-Scripting-Solutions.git
+ 1995  history
+ 1996  reset
+ 1997  history
+admin1@ubuntu18:~$ ls
+ amdz-ng-gui_2019-03-29.bcss         node_modules
+ Android                             package-lock.json
+ AndroidStudioProjects                PascalSample.pas
+admin1@ubuntu18:~$ cd ../
+//////////////////////////////////////////////////////////////////////////////////
+
+Команда pwd возвращает текущую директорию.
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:/home$ pwd
+/home
+//////////////////////////////////////////////////////////////////////////////////
+
+Команда whoami возвращает текущего пользователя
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:/home$ whoami
+admin1
+//////////////////////////////////////////////////////////////////////////////////
+
+Создаём новый shell скрипт и запускаем его в редакторе atom
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~$ cd "/home/admin1/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts/"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ atom script.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+Делаем скрипт исполняемым
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ chmod a+x script.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+Запускаем скрипт
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ bash script.sh
+admin1
+/home/admin1/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts
+script.sh
+Echo one 1
+Echo two 2
+//////////////////////////////////////////////////////////////////////////////////
+
+Ещё один способ запуска скрипта
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ ./script.sh
+admin1
+/home/admin1/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts
+script.sh
+Echo one 1
+Echo two 2
+//////////////////////////////////////////////////////////////////////////////////
+
+Relative Address and Full path
+    * Relative addresses:
+        - Interpreter to execute content exit in current directory:;
+        - Example - /usr/bin, /bin/ and /sbin
+    * Full pathL:
+        - More concrete and hardcoded;
+        - Interpreter try to use complete path;
+        - Example - /bin/ls or /usr/local/bin/myBinary/.
+
+Integrated Developmrnt Editors (IDEs)
+    * List of editors:
+        - vi/vim;
+        - nano;
+        - gedit.
+
+Устанавливаем vim
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ sudo apt-get -y install vim
+[sudo] пароль для admin1:
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Уже установлен пакет vim самой новой версии (2:8.0.1453-1ubuntu1.3).
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  fonts-font-awesome libgeos-3.6.2 libllvm8 libllvm8:i386 libllvm9
+  libllvm9:i386 python3-flask-htmlmin python3-htmlmin
+Для их удаления используйте «sudo apt autoremove».
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+//////////////////////////////////////////////////////////////////////////////////
+For CentOs or RHEL
+    * $ sudo yum install -y vim
+For Fedora
+    * $ sudo dnf install -y vim
+
+Создаём скрипт в vim
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ vim my_first_script.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+Работаем в vim:
+    Включение режима вставки:
+        Нажимаем 'i'
+    Навигация:
+        Стрелки: "Вперёд", "Назад", "Влево", "Вправо".
+    Выход из режима вставки:
+        Нажимаем "Esc" и переходим обратно в командный режим vim
+    Выходим из vim:
+        Вводим последовательность символов ':', 'w', и 'q' (:wq) и жмём 'Enter'.
+        w - Запись файла на диск;
+        q - Выход из vim.
+
+    File "my_first_script.sh"$:
+**********************************************************************************
+#!/bin/bash
+
+echo "Hello world! This is my first Bash script!"
+# Опция "-n" - не выводить перевод строки;
+echo -n "I am executing the script with user: "
+whoami
+echo -n "I am currently running in the directory: "
+pwd
+# "0" - означает нормальное окончание работы скрипта
+exit 0
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ bash my_first_script.sh
+Hello world! This is my first Bash script!
+I am executing the script with user: admin1
+I am currently running in the directory: /home/admin1/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts
+//////////////////////////////////////////////////////////////////////////////////
