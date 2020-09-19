@@ -1,0 +1,70 @@
+
+
+    0103.Creating and Using Basic Variables
+
+    Getting Ready
+
+        Script-my_first_script.sh
+     Could use variables to contain static or dynamic values/
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals/Scripts$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0102.Getting Started with Bash and CLI Fundamentals$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd "0103.Creating and Using Basic Variables"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0103.Creating and Using Basic Variables$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0103.Creating and Using Basic Variables/Scripts$ atom example.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "example.sh":
+**********************************************************************************
+#!/bin/bash
+
+PI=3.14
+VAR_A=10
+VAR_B=$VAR_A
+VAR_C=${VAR_B}
+
+echo "Lets print 3 variables:"
+echo $VAR_A
+echo $VAR_B
+echo $VAR_C
+
+echo "We know this will break:"
+echo "0. The value of PI is $PIabc"
+
+echo "And these will work:"
+echo "1. The value of PI is $PI"
+echo "2. The value of PI is ${PI}"
+echo "3. The value of PI is" $PI
+
+echo "And we can make a new string"
+STR_A="Bob"
+STR_B="Jane"
+echo "${STR_A} + ${STR_B} equals Bob + Jane"
+STR_C=${STR_A}" + "${STR_B}
+echo "$STR_C is the same as Bob + Jane too!"
+echo "${STR_C} + ${PI}"
+
+exit 0
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0103.Creating and Using Basic Variables/Scripts$ chmod a+x example.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0103.Creating and Using Basic Variables/Scripts$ bash example.sh
+Lets print 3 variables:
+10
+10
+10
+We know this will break:
+0. The value of PI is
+And these will work:
+1. The value of PI is 3.14
+2. The value of PI is 3.14
+3. The value of PI is 3.14
+And we can make a new string
+Bob + Jane equals Bob + Jane
+Bob + Jane is the same as Bob + Jane too!
+Bob + Jane + 3.14
+//////////////////////////////////////////////////////////////////////////////////
+
+
