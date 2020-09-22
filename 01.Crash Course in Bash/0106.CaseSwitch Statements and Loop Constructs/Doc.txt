@@ -1,0 +1,208 @@
+
+
+    CaseSwitch Statements and Loop Constructs
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom if_elif_else.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "if_elif_else.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+VAR=10
+
+if [ $VAR -eq 1 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 2 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 3 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 4 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 5 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 6 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 7 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 8 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 9 ]; then
+  echo "$VAR"
+elif [ $VAR -eq 10 ]; then
+  echo "$VAR"
+else
+  echo "I am not looking to match this value"
+fi
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x if_elif_else.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash if_elif_else.sh
+10
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom case.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "case.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+VAR=10
+
+case $VAR in
+  1)
+    echo "1"
+    ;;
+  2)
+    echo "2"
+    ;;
+  *)
+    echo "What is this var?"
+    exit 1
+esac
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x case.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash case.sh
+What is this var?
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom case1.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "case1.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+VAR=10
+
+case $VAR in
+  1)
+    echo "1"
+    ;;
+  2)
+    echo "2"
+    ;;
+  *)
+    echo "What is this var?"
+    exit 1
+esac
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x case1.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash case1.sh
+10
+//////////////////////////////////////////////////////////////////////////////////
+
+    Basic Loops
+
+   Scenario: Imagine iterating through a list of files or a dynamic array and monotonously evaluating each and every one?
+   Or waiting until a condition was true?
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom for.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "for.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+FILES=( "file1" "file2" "file3" )
+for ELEMENT in ${FILES[@]}
+do
+  echo "${ELEMENT}"
+done
+
+echo "Echo\'d all the files"
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x for.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash for.sh
+file1
+file2
+file3
+Echo\'d all the files
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom do_while.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "do_while.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+CTR=1
+while [ ${CTR} -lt 9 ]
+do
+  echo "CTR var: ${CTR}"
+  ((CTR++))
+done
+echo "Finished"
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x do_while.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash do_while.sh
+CTR var: 1
+CTR var: 2
+CTR var: 3
+CTR var: 4
+CTR var: 5
+CTR var: 6
+CTR var: 7
+CTR var: 8
+Finished
+/////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ atom until.s
+/////////////////////////////////////////////////////////////////////////////////
+
+    File "until.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+CTR=1
+until [ ${CTR} -gt 9 ]
+do
+  echo "CTR var: ${CTR}"
+  ((CTR++))
+done
+echo "Finished"
+
+**********************************************************************************
+
+/////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ chmod a+x until.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ bash until.sh
+CTR var: 1
+CTR var: 2
+CTR var: 3
+CTR var: 4
+CTR var: 5
+CTR var: 6
+CTR var: 7
+CTR var: 8
+CTR var: 9
+Finished
+/////////////////////////////////////////////////////////////////////////////////
