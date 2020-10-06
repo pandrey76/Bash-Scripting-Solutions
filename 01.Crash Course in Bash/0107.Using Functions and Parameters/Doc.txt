@@ -1,0 +1,88 @@
+
+
+    Using Functions and Parameters
+
+    Function - Definition
+
+    A function is a self-contained section of code that performs a single task. However, a function performing
+a task may also execute many subtasks in order to complete its main task.
+
+    Function
+        * Example - file_creator;
+        * Task:
+            - Check to see whether a file exits;
+            - If the file exits, truncate it; otherwise, create a new one;
+            - Apply correct permissions.
+
+    Parameter
+        * Variables that is set outside a function, used within the function;
+        * Useful:
+            - Create segments of code; perform generic task;
+            - Reusable by other scripts or within loops;
+            - Local variables accessible within the function itself.
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs/Scripts$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0106.CaseSwitch Statements and Loop Constructs$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ atom my_function.sh//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "my_function.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+function my_function() {
+  local PARAM_1="$1"
+  local PARAM_2="$2"
+  local PARAM_3="$3"
+  echo "${PARAM_1} ${PARAM_2} ${PARAM_3}"
+}
+
+my_function "a" "b" "c"
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ chmod a+x my_function.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ bash my_function.sh
+a b c
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ atom function.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "function.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+FILES=( "file1" "file2" "file3" )
+
+function  create_file() {
+    local FNAME="${1}"
+    local PERMISSIONS="${2}"
+    touch "${FNAME}"
+    chmod "${PERMISSIONS}" "${FNAME}"
+    ls -l "${FNAME}"
+}
+
+for ELEMENT in ${FILES[@]}
+do
+  create_file "${ELEMENT}" "a+x"
+done
+
+echo "Created all the files with a function!"
+exit 0
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ chmod a+x function.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ bash function.sh
+-rwxr-xr-x 1 admin1 admin1 0 окт  6 19:04 file1
+-rwxr-xr-x 1 admin1 admin1 0 окт  6 19:04 file2
+-rwxr-xr-x 1 admin1 admin1 0 окт  6 19:04 file3
+Created all the files with a function!
+//////////////////////////////////////////////////////////////////////////////////
