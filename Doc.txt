@@ -946,4 +946,123 @@ Current ret after: FOUND IT
 
 //////////////////////////////////////////////////////////////////////////////////
 
+
 #################################################################################
+
+   0110.Getting Program Input Parameters
+
+#################################################################################
+
+
+    Getting Program Input Parameters
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts$ cd ../
+admin1 @ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ mkdir "0110.Getting Program Input Parameters"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd "0110.Getting Program Input Parameters"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters$ atom Doc.txt Terminal.html
+
+//////////////////////////////////////////////////////////////////////////////////
+
+    Flags
+        * Allows to perform things such as:
+            + -l, --long-version, -v 10, --verbosity=10;
+        * Used to pass parameters or arguments to a program at runtime;
+        * Example - bash myProgram.sh -v 99 --name=Ron -l Bash
+
+//////////////////////////////////////////////////////////////////////////////////
+
+dmin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters$ mkdir Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ atom flags.sh
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "flags.sh":
+**********************************************************************************
+
+
+#!/bin/bash
+
+HELP_STR="usage: $0 [-h] [-f] [-l] [--firstname[=]<value>] [--lastname[=]<value>] [--help]"
+
+optspec=":flh-:"
+while getopts "$optspec" optchar; do
+    case "${optchar}" in
+        -)
+        case "${OPTARG}" in
+            firstname)
+                val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+                FIRSTNAME="${val}"
+                ;;
+            lastname)
+                val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+                LASTNAME="$val"
+                ;;
+            help)
+                val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+                ;;
+            *)
+                if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then
+                    echo "Found an unknow option --${OPTARG}" >&2
+                fi
+                ;;
+        esac;;
+    f)
+        val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+        FIRSTNAME="${val}"
+        ;;
+    l)
+        val="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
+        LASTNAME="$val"
+        ;;
+    h)
+        echo "${HELP_STR}" >&2
+        exit 2
+        ;;
+    *)
+        if [ "$OPTERR" != 1 ] || [ "${optspec:0:1}" != ":" ]; then
+            echo "Error parsing short flag: '-${OPTARG}'" >&2
+        fi
+        ;;
+    esac
+done
+
+if [ -z "$1" ]; then
+    echo "${HELP_STR}" >&2
+    exit 2
+fi
+
+if [ -z "${FIRSTNAME}" ] || [ -z "${LASTNAME}" ]; then
+    echo "Both firstname and lastname are required!"
+    exit 3
+fi
+
+echo "Welcome ${FIRSTNAME} ${LASTNAME}"
+
+exit 0
+
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ chmod a+x flags.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ bash flags.sh
+usage: flags.sh [-h] [-f] [-l] [--firstname[=]<value>] [--lastname[=]<value>] [--help]
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ bash flags.sh -h
+usage: flags.sh [-h] [-f] [-l] [--firstname[=]<value>] [--lastname[=]<value>] [--help]
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ bash flags.sh --fname Bob
+Both firstname and lastname are required!
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ bash flags.sh --firstname To -l Mater
+Welcome To Mater
+
+//////////////////////////////////////////////////////////////////////////////////
+
+#################################################################################
+
