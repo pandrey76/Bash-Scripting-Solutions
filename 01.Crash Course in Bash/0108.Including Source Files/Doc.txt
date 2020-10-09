@@ -1,0 +1,59 @@
+
+
+    Including Source Files
+
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters/Scripts$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0107.Using Functions and Parameters$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ mkdir '0108.Including Source Files'
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd '0108.Including Source Files'
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files$ mkdir Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts$ atom library.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+    File "library.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+function create_file() {
+  local FNAME=$1
+  touch "${FNAME}"
+  ls "${FNAME}"
+}
+
+function delete_file() {
+  local FNAME=$1
+  rm "${FNAME}"
+  ls "${FNAME}"
+}
+
+
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts$ atom io_maker.sh
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "function.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+source library.sh
+FNAME="my_test_file.txt"
+create_file "${FNAME}"
+delete_file "${FNAME}"
+
+exit 0
+**********************************************************************************
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts$ chmod a+x io_maker.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts$ bash io_maker.sh
+my_test_file.txt
+ls: невозможно получить доступ к 'my_test_file.txt': Нет такого файла или каталога//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
