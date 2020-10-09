@@ -1,0 +1,96 @@
+
+
+    Retrieving Return Codes and Output
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ mkdir "0109.Retrieving Return codes and Output"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd "0109.Retrieving Return codes and Output"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output$ atom Doc.txt Terminal.html
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    Return Codes
+        * Limited to between 0-255;
+        * Use unsigned 8-bit integer;
+        * Value of -1, it will return 255;
+        * Useful when you want to know whether:
+            - Found a match when performing a match;
+            - Command executed successfully or encountered an error.
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output$ mkdir Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts$ atom return_codes_101.sh
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "return_codes_101.sh":
+**********************************************************************************
+
+#!/bin/bash
+
+GLOBAL_RET=255
+
+function my_function_global() {
+  ls /home/${USER}/.bashrc
+  GLOBAL_RET=$?
+}
+
+function my_function_return() {
+  ls /home/${USER}/.bashrc
+  return $?
+}
+
+function my_function_str() {
+  local UNAME=$1
+  local OUTPUT=""
+  if [ -e /home/${UNAME}/.bashrc ];
+  then
+    OUTPUT='FOUND IT'
+  else
+    OUTPUT='NOT FOUND'
+  fi
+  echo ${OUTPUT}
+}
+
+echo "Current ret: ${GLOBAL_RET}"
+my_function_global "${USER}"
+echo "Current ret after: ${GLOBAL_RET}"
+GLOBAL_RET=255
+echo "Current ret: ${GLOBAL_RET}"
+my_function_return "${USER}"
+GLOBAL_RET=$?
+echo "Current ret after: ${GLOBAL_RET}"
+
+GLOBAL_RET=""
+echo "Current ret: ${GLOBAL_RET}"
+GLOBAL_RET=$(my_function_str ${USER})
+
+echo "Current ret afetr: $GLOBAL_RET"
+exit 0
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts$ chmod a+x return_codes_101.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts$ bash return_codes_101.sh
+Current ret: 255
+/home/admin1/.bashrc
+Current ret after: 0
+Current ret: 255
+/home/admin1/.bashrc
+Current ret after: 0
+Current ret:
+Current ret after: FOUND IT
+
+//////////////////////////////////////////////////////////////////////////////////

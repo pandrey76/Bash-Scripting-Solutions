@@ -314,4 +314,44 @@ ls: невозможно получить доступ к &apos;my_test_file.txt
 <h5>
 ###################################################################################################
 </h5>
+<h2>
+0109.Retrieving Return codes and Output
+</h2>
+<h5>
+###################################################################################################
+</h5>
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files/Scripts</b></font>$ cd ../
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0108.Including Source Files</b></font>$ cd ../
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash</b></font>$ mkdir &quot;0109.Retrieving Return codes and Output&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash</b></font>$ cd &quot;0109.Retrieving Return codes and Output&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ atom Doc.txt Terminal.html
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ ls ~/this.file.no.exit
+ls: невозможно получить доступ к &apos;/home/admin1/this.file.no.exit&apos;: Нет такого файла или каталога
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ echo $?
+2
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ ls ~/.bashrc
+/home/admin1/.bashrc
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ echo $?
+0
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ ls ~/this.file.no.exit
+ls: невозможно получить доступ к &apos;/home/admin1/this.file.no.exit&apos;: Нет такого файла или каталога
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ TEST=$?
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ echo $TEST
+2
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ mkdir Scripts
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output</b></font>$ cd Scripts
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts</b></font>$ atom return_codes_101.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts</b></font>$ chmod a+x return_codes_101.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0109.Retrieving Return codes and Output/Scripts</b></font>$ bash return_codes_101.sh
+Current ret: 255
+/home/admin1/.bashrc
+Current ret after: 0
+Current ret: 255
+/home/admin1/.bashrc
+Current ret after: 0
+Current ret:
+Current ret after: FOUND IT
+<h5>
+###################################################################################################
+</h5>
 </pre>
