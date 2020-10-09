@@ -1,15 +1,4 @@
-Bash Scripting Solutions
-
-    Bush tutorial course from Packt
-
-    Author Ron Brash, Ganesh Naik.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 01.Crash Course in Bash
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
     0101.The Course Overview
 #################################################################################
@@ -1148,5 +1137,3 @@ Basics
     * Covered basic Bash programming primitives:
         + for, for loops, while, and switch statements.
     * Learned about functions and parameters.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

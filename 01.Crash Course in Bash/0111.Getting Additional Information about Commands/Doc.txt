@@ -1,0 +1,62 @@
+
+
+    Getting Additional Information about Commands
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters/Scripts$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0110.Getting Program Input Parameters$ cd ../
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ mkdir "0111.Getting Additional Information about Commands"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash$ cd "0111.Getting Additional Information about Commands"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0111.Getting Additional Information about Commands$ atom Doc.txt Terminal.html
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0111.Getting Additional Information about Commands$ man mount
+MOUNT(8)                             System Administration                             MOUNT(8)
+
+NAME
+       mount - mount a filesystem
+
+SYNOPSIS
+       mount [-l|-h|-V]
+
+       mount -a [-fFnrsvw] [-t fstype] [-O optlist]
+
+       mount [-fnrsvw] [-o options] device|dir
+
+       mount [-fnrsvw] [-t fstype] [-o options] device dir
+
+DESCRIPTION
+       All  files accessible in a Unix system are arranged in one big tree, the file hierarchy,
+       rooted at /.  These files can be spread out over several  devices.   The  mount  command
+       serves  to attach the filesystem found on some device to the big file tree.  Conversely,
+       the umount(8) command will detach it again.  The filesystem is used to control how  data
+       is stored on the device or provided in a virtual way by network or another services.
+
+       The standard form of the mount command is:
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/01.Crash Course in Bash/0111.Getting Additional Information about Commands$ info
+File: dir,      Node: Top,      This is the top of the INFO tree.
+
+This is the Info main menu (aka directory node).
+A few useful Info commands:
+
+  'q' quits;
+  'H' lists all Info commands;
+  'h' starts the Info tutorial;
+  'mTexinfo RET' visits the Texinfo manual, etc.
+
+* Menu:
+
+Archiving
+* Shar utilities: (sharutils).  Shell archiver, uuencode/uudecode.
+
+Basics
+* Common options: (coreutils)Common options.
+* Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
+* Date input formats: (coreutils)Date input formats.
+* Ed: (ed).                     The GNU line editor
+* File permissions: (coreutils)File permissions.
+
+//////////////////////////////////////////////////////////////////////////////////
