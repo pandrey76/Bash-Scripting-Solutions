@@ -1,0 +1,473 @@
+#################################################################################
+
+
+   0201.StripingAlteringSortingDeletingSearching Strings with Bash Only
+
+#################################################################################
+
+
+
+      StripingAlteringSortingDeletingSearching Strings with Bash Only
+
+Striping / Altering / Sorting /Deleting / Searching String with Bash Only
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer$ mkdir "0201.StripingAlteringSortingDeletingSearching Strings with Bash Only"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer$ cd "0201.StripingAlteringSortingDeletingSearching Strings with Bash Only"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only$ mkdir Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only$ cd Scripts
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ atom script.sh
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "return_codes_101.sh":
+**********************************************************************************
+
+#!/usr/bin/env bash
+
+VARIABLE="My test string"
+# ${VARIABLE:sringPosition:optionalLength}
+echo ${VARIABLE:3:4}
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ chmod a+x script.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ bash script.sh
+test
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ rm --help
+Использование: rm [КЛЮЧ]… [ФАЙЛ]…
+Удаляет (ссылки на) ФАЙЛ(ы).
+
+  -f, --force         игнорировать несуществующие файлы и аргументы, ни о чем
+                      не спрашивать
+  -i                  запрашивать подтверждение перед каждым удалением
+  -I                  запрашивать подтверждение один раз перед удалением
+                      более трёх файлов или перед рекурсивным удалением;
+                      не так назойливо, как с -i, но всё же защищает
+                      от большинства ошибок
+      --interactive[=КОГДА] запрашивать подтверждение в соответствии
+                      с КОГДА: never (никогда), once (-I, один раз) или
+                      always (-i, всегда);
+                      если КОГДА не задано — запрашивать всегда
+      --one-file-system  при рекурсивном удалении иерархии, пропускать все
+                      каталоги, находящиеся не на той же файловой системе,
+                      что и соответствующий аргумент командной строки
+      --no-preserve-root не обрабатывать «/» особым образом
+      --preserve-root   не удалять «/» (по умолчанию)
+  -r, -R, --recursive   рекурсивно удалять каталоги и их содержимое
+  -d, --dir             удалять пустые каталоги
+  -v, --verbose         пояснять производимые действия
+      --help     показать эту справку и выйти
+      --version  показать информацию о версии и выйти
+
+По умолчанию rm не удаляет каталоги.  Используйте ключ --recursive (-r
+или -R), чтобы удалить все перечисленные каталоги вместе с их
+содержимым.
+
+Для удаления файла, начинающегося с «-» (например: «-foo»),
+используйте одну из следующих команд:
+  rm -- -foo
+
+  rm ./-foo
+
+Заметим, что при использовании rm для удаления файла его содержимое
+обычно можно восстановить, имея соответствующий опыт и время.
+Используйте shred, если вам необходима большая
+уверенность в невозможности восстановления содержимого.
+
+Оперативная справка GNU coreutils: <http://www.gnu.org/software/coreutils/>
+Об ошибках в переводе сообщений «rm» сообщайте по адресу <gnu@mx.ru>
+Полная документация: <http://www.gnu.org/software/coreutils/rm>
+или доступная локально: info '(coreutils) rm invocation'
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ rm -rf testdata;mkdir -p testdata
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ mkdir --help
+Использование: mkdir [КЛЮЧ]… КАТАЛОГ…
+Создает КАТАЛОГ(и), если он ещё не существует.
+
+Аргументы, обязательные для длинных ключей, обязательны и для коротких.
+  -m, --mode=РЕЖИМ   установить права доступа к файлу (как в chmod),
+                     а не a=rwx - umask
+  -p, --parents      не выдавать ошибку, если существует, создавать
+                     родительские каталоги, если необходимо
+  -v, --verbose      печатать сообщение о каждом созданном каталоге
+  -Z                 установить контекст безопасности SELinux
+                     каждого создаваемого каталога равным типу по умолчанию
+      --context[=CTX]  подобно -Z, или если указан CTX, то установить
+                     контекст безопасности SELinux
+                     или SMACK равным CTX
+      --help     показать эту справку и выйти
+      --version  показать информацию о версии и выйти
+
+Оперативная справка GNU coreutils: <http://www.gnu.org/software/coreutils/>
+Об ошибках в переводе сообщений «mkdir» сообщайте по адресу <gnu@mx.ru>
+Полная документация: <http://www.gnu.org/software/coreutils/mkdir>
+или доступная локально: info '(coreutils) mkdir invocation'
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ echo "Bob, Jane, Naz, Sue, Max, Tom$" > testdata/garbage.csv
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "garbage.csv":
+**********************************************************************************
+
+Bob, Jane, Naz, Sue, Max, Tom$
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ echo "Zero, Alpha, Beta, Gama, Delta, Foxrot#" >> testdata/garbage.csv
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "garbage.csv":
+**********************************************************************************
+
+Bob, Jane, Naz, Sue, Max, Tom$
+Zero, Alpha, Beta, Gama, Delta, Foxrot#
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ echo "1000,Bob,Green,Dec,1,1967" > testdata/employees.csv
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "employees.csv":
+**********************************************************************************
+
+1000,Bob,Green,Dec,1,1967
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ echo "2000,Ron,Brash,Jan,20,1987" >> testdata/employees.csv
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "employees.csv":
+**********************************************************************************
+
+1000,Bob,Green,Dec,1,1967
+2000,Ron,Brash,Jan,20,1987
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ echo "3000,James,Fairview,Jul,15,1992" >> testdata/employees.csv
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "employees.csv":
+**********************************************************************************
+
+000,Bob,Green,Dec,1,1967
+2000,Ron,Brash,Jan,20,1987
+3000,James,Fairview,Jul,15,1992
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ atom builtin-str.sh
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "builtin-str.sh":
+**********************************************************************************
+
+#!/usr/bin/env bash
+
+STR="1234567890asdfghjkl"
+
+echo "first character ${STR:0:1}"
+echo "first three characters ${STR:0:3}"
+
+echo "third character onwards ${STR: 3}"
+echo "forth to sixth character ${STR: 3: 3}"
+
+echo "last character ${STR: -1}"
+
+
+STR2="abc"
+STR3="bcd"
+STR4="Bcd"
+
+if [[ $STR2 < $STR3 ]]; then
+    echo "STR2 is less than STR3"
+else
+    echo "STR3 is greater than STR2"
+fi
+
+if [[ $STR3 < $STR4 ]]; then
+    echo "STR3 is less than STR4"
+else
+    echo "STR4 is greater than STR3"
+fi
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ chmod a+x  builtin-str.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ bash  builtin-str.sh
+first character 1
+first three characters 123
+third character onwards 4567890asdfghjkl
+forth to sixth character 456
+last character l
+STR2 is less than STR3
+STR3 is less than STR4
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ atom builtin-string.sh
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+    File "builtin-striing.sh":
+**********************************************************************************
+#!/usr/bin/env bash
+
+GB_CSV="testdata/garbage.csv"
+EM_CSV="testdata/employees.csv"
+
+# Read from file (garbage.csv) to array
+
+set IFS=,
+set oldIFS = $IFS
+readarray -t ARR < ${GB_CSV}
+
+
+ARRY_ELEM=${#ARR[@]}
+echo "We have ${ARRY_ELEM} rows in ${GB_CSV}"
+
+# Remove extra spaces on the first two lines
+
+INC=0
+for i in "${ARR[@]}"
+do
+    :
+    res="${i//[^ ]}"
+    TMP_CNT="${#res}"
+    while [ ${TMP_CNT} -gt 0 ]; do
+        i=${i/, /,}
+        TMP_CNT=$[$TMP_CNT-1]
+    done
+    ARR[$INC]=$i
+    INC=$[$INC+1]
+done
+
+# Remove last character from each line
+
+INC=0
+for i in "${ARR[@]}"
+do
+    :
+    ARR[$INC]=${i::-1}
+    INC=$[$INC+1]
+done
+
+# Change case of each character to uppercase
+
+INC=0
+for i in "${ARR[@]}"
+do
+    :
+    ARR[$INC]=${i^^}
+    printf "%s" "${ARR[$INC]}"
+    INC=$[$INC+1]
+    echo
+done
+
+# Insert a # at beginning of each line
+
+set IFS=,
+set oldIFS = $IFS
+readarray -t ARR < ${EM_CSV}
+
+ARRY_ELEM=${#ARR[@]}
+
+echo;echo "We have ${ARRY_ELEM} rows in ${EM_CSV}"
+
+INC=0
+for i in "${ARR[@]}"
+do
+    :
+    ARR[$INC]="#${i}"
+    printf "%s" "${ARR[$INC]}"
+    INC=$[$INC+1]
+    echo
+done
+
+# Replace Bob with Robert
+
+echo
+echo "Let's make Bob, Robert!"
+INC=0
+for i in "${ARR[@]}"
+do
+    :
+    ARR[$INC]=${i/Bob/Robert}
+    # {variable/valueToFind/valueToReplaceWith}
+
+    printf "%s" "${ARR[$INC]}"
+    INC=$[$INC+1]
+    echo
+done
+
+# Remove exact date of birth column/field in each line
+
+echo;echo "Lets remove the column: birthday (1-31)"
+INC=0
+COLUM_TO_REM=4
+for i in "${ARR[@]}"
+do
+    :
+
+    TMP_CNT=0
+    STR=""
+    IFS=',' read -ra ELEM_ARR <<< "$i"
+    for field in "${ELEM_ARR[@]}"; do
+
+        if [ $TMP_CNT -ne 0 ] && [ $TMP_CNT -ne $COLUM_TO_REM ]; then
+            STR="${STR},${field}"
+        elif [ $TMP_CNT -eq 0 ]; then
+            STR="${STR}${field}"
+        fi
+        TMP_CNT=$[$TMP_CNT+1]
+    done
+
+    ARR[$INC]=$STR
+    echo "${ARR[$INC]}"
+    INC=$[$INC+1]
+done
+
+**********************************************************************************
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ readarray --help
+readarray: readarray [-n число] [-O начало] [-s число] [-t] [-u fd] [-C callback] [-c quantum] [массив]
+    Чтение строк из файла в переменную массива.
+
+    Синоним команды «mapfile».
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ read --help
+read: read [-ers] [-a массив] [-d разделитель] [-i текст] [-n число_символов] [-N число_символов] [-p приглашение] [-t тайм-аут] [-u fd] [имя ...]
+    Read a line from the standard input and split it into fields.
+
+    Reads a single line from the standard input, or from file descriptor FD
+    if the -u option is supplied.  The line is split into fields as with word
+    splitting, and the first word is assigned to the first NAME, the second
+    word to the second NAME, and so on, with any leftover words assigned to
+    the last NAME.  Only the characters found in $IFS are recognized as word
+    delimiters.
+
+    If no NAMEs are supplied, the line read is stored in the REPLY variable.
+
+    Options:
+      -a array	assign the words read to sequential indices of the array
+    		variable ARRAY, starting at zero
+      -d delim	continue until the first character of DELIM is read, rather
+    		than newline
+      -e	use Readline to obtain the line in an interactive shell
+      -i text	use TEXT as the initial text for Readline
+      -n nchars	return after reading NCHARS characters rather than waiting
+    		for a newline, but honor a delimiter if fewer than
+    		NCHARS characters are read before the delimiter
+      -N nchars	return only after reading exactly NCHARS characters, unless
+    		EOF is encountered or read times out, ignoring any
+    		delimiter
+      -p prompt	output the string PROMPT without a trailing newline before
+    		attempting to read
+      -r	do not allow backslashes to escape any characters
+      -s	do not echo input coming from a terminal
+      -t timeout	time out and return failure if a complete line of
+    		input is not read within TIMEOUT seconds.  The value of the
+    		TMOUT variable is the default timeout.  TIMEOUT may be a
+    		fractional number.  If TIMEOUT is 0, read returns
+    		immediately, without trying to read any data, returning
+    		success only if input is available on the specified
+    		file descriptor.  The exit status is greater than 128
+    		if the timeout is exceeded
+      -u fd	read from file descriptor FD instead of the standard input
+
+    Exit Status:
+    The return code is zero, unless end-of-file is encountered, read times out
+    (in which case it's greater than 128), a variable assignment error occurs,
+    or an invalid file descriptor is supplied as the argument to -u.
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ chmod a+x builtin-string.sh
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts$ bash builtin-string.sh
+We have 2 rows in testdata/garbage.csv
+BOB,JANE,NAZ,SUE,MAX,TOM
+ZERO,ALPHA,BETA,GAMA,DELTA,FOXROT
+
+We have 3 rows in testdata/employees.csv
+#1000,Bob,Green,Dec,1,1967
+#2000,Ron,Brash,Jan,20,1987
+#3000,James,Fairview,Jul,15,1992
+
+Let's make Bob, Robert!
+#1000,Robert,Green,Dec,1,1967
+#2000,Ron,Brash,Jan,20,1987
+#3000,James,Fairview,Jul,15,1992
+
+Lets remove the column: birthday (1-31)
+#1000,Robert,Green,Dec,1967
+#2000,Ron,Brash,Jan,1987
+#3000,James,Fairview,Jul,1992
+
+//////////////////////////////////////////////////////////////////////////////////
+
+#################################################################################
+
+
+
+

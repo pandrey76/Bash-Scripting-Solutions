@@ -1150,3 +1150,19 @@ Basics
     * Learned about functions and parameters.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+02.Acting Like a Typewriter and File Explorer
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//////////////////////////////////////////////////////////////////////////////////
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions$ cd "/home/admin1/work/Education/Admining/Bash-Scripting-Solutions"
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions$ mkdir "02.Acting Like a Typewriter and File Explorer"
+mkdir: невозможно создать каталог «02.Acting Like a Typewriter and File Explorer»: Файл существует
+admin1@ubuntu18:~/work/Education/Admining/Bash-Scripting-Solutions$ cd "02.Acting Like a Typewriter and File Explorer"
+//////////////////////////////////////////////////////////////////////////////////
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

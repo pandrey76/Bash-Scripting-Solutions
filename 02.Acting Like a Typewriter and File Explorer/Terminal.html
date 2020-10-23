@@ -1,0 +1,176 @@
+<h5>
+###################################################################################################
+</h5>
+<h3>
+0201.StripingAlteringSortingDeletingSearching Strings with Bash Only
+</h3>
+<h5>
+###################################################################################################
+</h5>
+
+<pre><font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer</b></font>$ mkdir &quot;0201.StripingAlteringSortingDeletingSearching Strings with Bash Only&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer</b></font>$ cd &quot;0201.StripingAlteringSortingDeletingSearching Strings with Bash Only&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only</b></font>$ mkdir Scripts
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only</b></font>$ cd Scripts
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ atom script.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ chmod a+x script.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ bash script.sh
+test
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ rm --help
+Использование: rm [КЛЮЧ]… [ФАЙЛ]…
+Удаляет (ссылки на) ФАЙЛ(ы).
+
+  -f, --force         игнорировать несуществующие файлы и аргументы, ни о чем
+                      не спрашивать
+  -i                  запрашивать подтверждение перед каждым удалением
+  -I                  запрашивать подтверждение один раз перед удалением
+                      более трёх файлов или перед рекурсивным удалением;
+                      не так назойливо, как с -i, но всё же защищает
+                      от большинства ошибок
+      --interactive[=КОГДА] запрашивать подтверждение в соответствии
+                      с КОГДА: never (никогда), once (-I, один раз) или
+                      always (-i, всегда);
+                      если КОГДА не задано — запрашивать всегда
+      --one-file-system  при рекурсивном удалении иерархии, пропускать все
+                      каталоги, находящиеся не на той же файловой системе,
+                      что и соответствующий аргумент командной строки
+      --no-preserve-root не обрабатывать «/» особым образом
+      --preserve-root   не удалять «/» (по умолчанию)
+  -r, -R, --recursive   рекурсивно удалять каталоги и их содержимое
+  -d, --dir             удалять пустые каталоги
+  -v, --verbose         пояснять производимые действия
+      --help     показать эту справку и выйти
+      --version  показать информацию о версии и выйти
+
+По умолчанию rm не удаляет каталоги.  Используйте ключ --recursive (-r
+или -R), чтобы удалить все перечисленные каталоги вместе с их
+содержимым.
+
+Для удаления файла, начинающегося с «-» (например: «-foo»),
+используйте одну из следующих команд:
+  rm -- -foo
+
+  rm ./-foo
+
+Заметим, что при использовании rm для удаления файла его содержимое
+обычно можно восстановить, имея соответствующий опыт и время.
+Используйте shred, если вам необходима большая
+уверенность в невозможности восстановления содержимого.
+
+Оперативная справка GNU coreutils: &lt;http://www.gnu.org/software/coreutils/&gt;
+Об ошибках в переводе сообщений «rm» сообщайте по адресу &lt;gnu@mx.ru&gt;
+Полная документация: &lt;http://www.gnu.org/software/coreutils/rm&gt;
+или доступная локально: info &apos;(coreutils) rm invocation&apos;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ rm -rf testdata;mkdir -p testdata
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ mkdir --help
+Использование: mkdir [КЛЮЧ]… КАТАЛОГ…
+Создает КАТАЛОГ(и), если он ещё не существует.
+
+Аргументы, обязательные для длинных ключей, обязательны и для коротких.
+  -m, --mode=РЕЖИМ   установить права доступа к файлу (как в chmod),
+                     а не a=rwx - umask
+  -p, --parents      не выдавать ошибку, если существует, создавать
+                     родительские каталоги, если необходимо
+  -v, --verbose      печатать сообщение о каждом созданном каталоге
+  -Z                 установить контекст безопасности SELinux
+                     каждого создаваемого каталога равным типу по умолчанию
+      --context[=CTX]  подобно -Z, или если указан CTX, то установить
+                     контекст безопасности SELinux
+                     или SMACK равным CTX
+      --help     показать эту справку и выйти
+      --version  показать информацию о версии и выйти
+
+Оперативная справка GNU coreutils: &lt;http://www.gnu.org/software/coreutils/&gt;
+Об ошибках в переводе сообщений «mkdir» сообщайте по адресу &lt;gnu@mx.ru&gt;
+Полная документация: &lt;http://www.gnu.org/software/coreutils/mkdir&gt;
+или доступная локально: info &apos;(coreutils) mkdir invocation&apos;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ echo &quot;Bob, Jane, Naz, Sue, Max, Tom$&quot; &gt; testdata/garbage.csv
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ echo &quot;Zero, Alpha, Beta, Gama, Delta, Foxrot#&quot; &gt;&gt; testdata/garbage.csv
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ echo &quot;1000,Bob,Green,Dec,1,1967&quot; &gt; testdata/employees.csv
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ echo &quot;2000,Ron,Brash,Jan,20,1987&quot; &gt;&gt; testdata/employees.csv
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ echo &quot;3000,James,Fairview,Jul,15,1992&quot; &gt;&gt; testdata/employees.csv
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ atom builtin-str.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ chmod a+x builtin-str.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ bash  builtin-str.sh
+first character 1
+first three characters 123
+third character onwards 4567890asdfghjkl
+forth to sixth character 456
+last character l
+STR2 is less than STR3
+STR3 is less than STR4
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ atom builtin-string.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ readarray --help
+readarray: readarray [-n число] [-O начало] [-s число] [-t] [-u fd] [-C callback] [-c quantum] [массив]
+    Чтение строк из файла в переменную массива.
+
+    Синоним команды «mapfile».
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ read --help
+read: read [-ers] [-a массив] [-d разделитель] [-i текст] [-n число_символов] [-N число_символов] [-p приглашение] [-t тайм-аут] [-u fd] [имя ...]
+    Read a line from the standard input and split it into fields.
+
+    Reads a single line from the standard input, or from file descriptor FD
+    if the -u option is supplied.  The line is split into fields as with word
+    splitting, and the first word is assigned to the first NAME, the second
+    word to the second NAME, and so on, with any leftover words assigned to
+    the last NAME.  Only the characters found in $IFS are recognized as word
+    delimiters.
+
+    If no NAMEs are supplied, the line read is stored in the REPLY variable.
+
+    Options:
+      -a array	assign the words read to sequential indices of the array
+    		variable ARRAY, starting at zero
+      -d delim	continue until the first character of DELIM is read, rather
+    		than newline
+      -e	use Readline to obtain the line in an interactive shell
+      -i text	use TEXT as the initial text for Readline
+      -n nchars	return after reading NCHARS characters rather than waiting
+    		for a newline, but honor a delimiter if fewer than
+    		NCHARS characters are read before the delimiter
+      -N nchars	return only after reading exactly NCHARS characters, unless
+    		EOF is encountered or read times out, ignoring any
+    		delimiter
+      -p prompt	output the string PROMPT without a trailing newline before
+    		attempting to read
+      -r	do not allow backslashes to escape any characters
+      -s	do not echo input coming from a terminal
+      -t timeout	time out and return failure if a complete line of
+    		input is not read within TIMEOUT seconds.  The value of the
+    		TMOUT variable is the default timeout.  TIMEOUT may be a
+    		fractional number.  If TIMEOUT is 0, read returns
+    		immediately, without trying to read any data, returning
+    		success only if input is available on the specified
+    		file descriptor.  The exit status is greater than 128
+    		if the timeout is exceeded
+      -u fd	read from file descriptor FD instead of the standard input
+
+    Exit Status:
+    The return code is zero, unless end-of-file is encountered, read times out
+    (in which case it&apos;s greater than 128), a variable assignment error occurs,
+    or an invalid file descriptor is supplied as the argument to -u.
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ chmod a+x builtin-string.sh
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/work/Education/Admining/Bash-Scripting-Solutions/02.Acting Like a Typewriter and File Explorer/0201.StripingAlteringSortingDeletingSearching Strings with Bash Only/Scripts</b></font>$ bash builtin-string.sh
+We have 2 rows in testdata/garbage.csv
+BOB,JANE,NAZ,SUE,MAX,TOM
+ZERO,ALPHA,BETA,GAMA,DELTA,FOXROT
+
+We have 3 rows in testdata/employees.csv
+#1000,Bob,Green,Dec,1,1967
+#2000,Ron,Brash,Jan,20,1987
+#3000,James,Fairview,Jul,15,1992
+
+Let&apos;s make Bob, Robert!
+#1000,Robert,Green,Dec,1,1967
+#2000,Ron,Brash,Jan,20,1987
+#3000,James,Fairview,Jul,15,1992
+
+Lets remove the column: birthday (1-31)
+#1000,Robert,Green,Dec,1967
+#2000,Ron,Brash,Jan,1987
+#3000,James,Fairview,Jul,1992
+</pre>
+
+<h5>
+###################################################################################################
+</h5>
